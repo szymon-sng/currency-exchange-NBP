@@ -95,7 +95,7 @@ $currencies = $currencyConverter->getCurrencies();
     <h2>Tabela Kursów Walut</h2>
     <?php
         $exchangeRateTable = new ExchangeRateTable($connection);
-        echo $exchangeRateTable->generateTable();
+        echo $exchangeRateTable->generateTable(10);
     ?>
     <a href="full-table.php">
     <input class="button-history" value="Zobacz wszystkie kursy">
@@ -145,7 +145,7 @@ $currencies = $currencyConverter->getCurrencies();
         <h2>Historia Przewalutowań</h2>
         <?php
         $conversionHistory = new ConversionHistory($connection);
-        $history = $conversionHistory->getConversionHistory();
+        $history = $conversionHistory->getConversionHistory(3);
         foreach ($history as $row) {
             echo 'Waluta źródłowa: ' . $row['source_currency'] . '<br>';
             echo 'Waluta docelowa: ' . $row['target_currency'] . '<br>';

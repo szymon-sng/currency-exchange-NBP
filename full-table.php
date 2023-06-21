@@ -20,7 +20,19 @@ $table = $exchangeRateTable->generateTable();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['refresh_rates'])) {
     $nbpApi = new NBPApi();
     $exchangeRates = $nbpApi->getExchangeRates();
+
+    $exchangeRateRepository = new ExchangeRateRepository($connection);
+    $exchangeRateRepository->deleteAllExchangeRates();
+
+    foreach ($exchangeRates as $rate) {
+        $currencyCode = $rate['code'];
+        $rateValue = $rate['mid'];
+
+        $exchangeRateRepository->saveExchangeRate($currencyCode, $rateValue);
+    }
 }
+
+
 ?>
 
 <!DOCTYPE html>

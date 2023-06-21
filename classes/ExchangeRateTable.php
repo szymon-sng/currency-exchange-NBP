@@ -8,14 +8,14 @@ class ExchangeRateTable
         $this->connection = $connection;
     }
 
-    public function generateTable(): string
+    public function generateTable($limit = null): string
     {
-        $stmt = $this->connection->query('SELECT currency_code, rate, date FROM exchange_rates ORDER BY date DESC LIMIT 10');
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $exchangeRateRepository = new ExchangeRateRepository($this->connection);
+        $exchangeRates = $exchangeRateRepository->getExchangeRates($limit);
 
         $table = '<table><thead><tr><th>Waluta</th><th>Kurs</th><th>Data</th></tr></thead><tbody>';
 
-        foreach ($result as $row) {
+        foreach ($exchangeRates as $row) {
             $table .= '<tr><td>' . $row['currency_code'] . '</td><td>' . $row['rate'] . '</td><td>' . $row['date'] . '</td></tr>';
         }
 

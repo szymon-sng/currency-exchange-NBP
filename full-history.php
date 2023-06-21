@@ -46,9 +46,6 @@ try {
         echo 'Data przewalutowania: ' . $row['conversion_date'] . '<br><br>';
     }
     ?>
-    <a href="full-history.php">
-        <input class="button-history" value="Zobacz pełną historie">
-    </a>
 </div>
 </body>
 </html>
