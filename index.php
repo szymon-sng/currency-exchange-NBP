@@ -3,6 +3,7 @@ require_once 'classes/NBPApi.php';
 require_once 'classes/ExchangeRateRepository.php';
 require_once 'classes/ExchangeRateTable.php';
 require_once 'classes/ConversionHistory.php';
+require_once 'config/config.php';
 
 class CurrencyConverter
 {
@@ -56,17 +57,6 @@ class CurrencyConverter
 
         return $currencies;
     }
-}
-
-$dsn = 'mysql:host=localhost;dbname=currency_exchange;charset=utf8';
-$username = 'root';
-$password = '';
-
-try {
-    $connection = new PDO($dsn, $username, $password);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    exit('Connection failed: ' . $e->getMessage());
 }
 
 $currencyConverter = new CurrencyConverter($connection);
