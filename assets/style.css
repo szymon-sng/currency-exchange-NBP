@@ -7,6 +7,9 @@ ul {
     padding: 0;
     width: 600px;
 }
+a {
+    text-decoration: none;
+}
 li {
     display: table-cell;
     position: relative;

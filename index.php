@@ -35,7 +35,7 @@ $currencies = $currencyConverter->getCurrencies();
         echo $exchangeRateTable->generateTable(10);
     ?>
     <a href="full-table.php">
-    <input class="button-history" value="Zobacz wszystkie kursy">
+    <button class="button-history">Zobacz wszystkie kursy</button>
     </a>
      </div>
      <div class="container">
@@ -55,7 +55,7 @@ $currencies = $currencyConverter->getCurrencies();
                 <option value="<?= htmlspecialchars($currency) ?>"><?= htmlspecialchars($currency) ?></option>
             <?php endforeach; ?>
         </select><br>
-        <input type="submit" class="button" value="Przewalutuj">
+        <button type="submit" class="button">Przewalutuj</button>
         <br>
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -92,7 +92,7 @@ $currencies = $currencyConverter->getCurrencies();
         }
         ?>
         <a href="full-history.php">
-            <input class="button-history" value="Zobacz pełną historie">
+            <button class="button-history">Zobacz pełną historie</button>
         </a>
     </div>
 </div>
